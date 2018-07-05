@@ -1,17 +1,13 @@
 
-function Mostrar()
+function mostrar()
 {
 var base;
 var altura;
+var area;
 var perimetro;
-var superficie;
-base = prompt("ingrese un numero");
-base = parseInt(base);
-altura = prompt("ingrese otro numero");
-altura = parseInt(altura);
-perimetro = base*3;
-superficie= (base * altura)/2;
-alert("la superficie es "+perimetro+" y el perimetro es "+perimetro);
-
-
+base=prompt("Ingrese el valor de un lado: ");
+altura=prompt("Ingrese el valor de la altura: ");
+area=base*altura/2;
+perimetro=base*3;
+alert("El area vale "+area+" y el perimetro "+perimetro);
 }
