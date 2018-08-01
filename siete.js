@@ -5,14 +5,20 @@ function mostrar()
 	var contador;
 	var sexo;
 	var edad;
-	var mayor=0;
-	var menor=0;
+	var mayor;
+	var menor;
 	var nombre;
 	var nombreMayor;
 	var nombreMenor;
+	var nombreHombreMenor;
+	var edadHombreMenor
+	var Mmayor=0;
+	var Mmenor=0;
 
-	bandera=0
+	bandera=0;
 	contador=0;
+	mayor=0;
+	menor=0;
 	mujeres=0;
 	hombres=0;
 
@@ -21,54 +27,73 @@ function mostrar()
 		contador++;
 		nombre=prompt("Ingrese su nombre #"+contador);
 		sexo=prompt("Ingrese su sexo (f/m) #"+contador);
+		
 		edad=parseInt(prompt("Ingrese su edad #"+contador));
+ 		
+ 		while(sexo!="f" && sexo!="m")
+ 		{
+ 			
+ 			sexo=prompt("ERROR.Ingrese f o m");
+ 			
+ 		}
 
-		while(sexo!="f" && sexo!="m")
-		{
-			sexo=prompt("ERROR.Ingrese f o m");
-			
-		}
-		while(edad<0 || edad>100)
-		{
-			edad=parseInt(prompt("ERROR.Ingrese una edad valida"));
-		}
-			if(sexo=="f")
-			{
-				mujeres++;
-			}
-			if(sexo=="m")
-			{
-				hombres++;
-			}
-			if(edad<18)
-			{
-				menor++;
-			}
-			if(edad>17)
-			{
-				mayor++;
-			}	
-			if(bandera==0)
-			{
-				nombreMenor=edad;
-				nombreMayor=edad;
+		if(sexo=="f")
+ 			{
+ 				mujeres++;
+ 			}else{
+ 				hombres++;
+ 			
+ 			}
+ 			
+ 			if(edad<18){
+ 				
+ 				Mmenor++;
+ 			}else{
+ 				
+				Mmayor++;
+ 			}	
+ 			
+ 			if(bandera==0 || edad > mayor)
+ 			{
+ 				mayor=edad;
+ 				nombreMayor=nombre;
+ 			}
 
-			}
-			if(nombreMayor>edad)
-			{
-				edad=nombreMayor;
-			}
-			if(nombreMenor<edad)
-			{
-				edad=nombreMenor;
-			}
-			
-			
+ 			if(bandera == 0 || edad < menor)
+ 			{
+ 				menor=edad;
+ 				nombreMenor=nombre;
+ 				bandera=1;
+ 			}
+
+
+ 			if(sexo=='m' && hombres == 1){
+ 				nombreHombreMenor=nombre;
+ 				edadHombreMenor=edad;
+ 			
+ 			}
+
+ 			if(sexo=='m' && edad<edadHombreMenor){
+ 				nombreHombreMenor=nombre;
+ 				edadHombreMenor=edad;
+ 			}
+ 	    	
 	}
-	document.write("<br> la cantidad de mayores es : "+mayor);
-	document.write("<br> la cantidad de menores es : "+menor);
-	document.write("<br> la cantidad de hombres es : "+hombres);
-	document.write("<br> la cantidad de mujeres es : "+mujeres);
-	document.write("<br> el nombre del mayor es : "+nombreMayor);
-	document.write("<br> el nombre del menor es : "+nombreMenor);
+
+	
+
+			
+
+
+	document.write("<br> la cantidad de mayores es : "+Mmayor);
+ 	document.write("<br> la cantidad de menores es : "+Mmenor);
+ 	document.write("<br> la cantidad de hombres es : "+hombres);
+ 	document.write("<br> la cantidad de mujeres es : "+mujeres);
+ 	document.write("<br> el nombre del mayor es : "+nombreMayor);
+ 	document.write("<br> el nombre del menor es : "+nombreMenor);
+ 	if(hombres==0){
+ 		nombreHombreMenor="No se ingreso ningun hombre";
+
+ 	}
+ 	document.write("<br> el nombre del hombre menor es :"+nombreHombreMenor);
 }
