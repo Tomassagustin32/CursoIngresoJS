@@ -1,99 +1,54 @@
 function mostrar()
 {
-	var hombres;
-	var mujeres;
-	var contador;
+	var notas;
 	var sexo;
-	var edad;
-	var mayor;
-	var menor;
-	var nombre;
-	var nombreMayor;
-	var nombreMenor;
-	var nombreHombreMenor;
-	var edadHombreMenor
-	var Mmayor=0;
-	var Mmenor=0;
+	var contador=0;
+	var varones=0;
+	var bandera=0;
+	var notaBaja;
+	var sexoBaja;
+	var acumulador=0;
 
-	bandera=0;
-	contador=0;
-	mayor=0;
-	menor=0;
-	mujeres=0;
-	hombres=0;
+	acumulador=parseInt(acumulador);
 
-	while(contador<3)
-	{
+	while(contador<5){
 		contador++;
-		nombre=prompt("Ingrese su nombre #"+contador);
-		sexo=prompt("Ingrese su sexo (f/m) #"+contador);
-		
-		edad=parseInt(prompt("Ingrese su edad #"+contador));
- 		
- 		while(sexo!="f" && sexo!="m")
- 		{
- 			
- 			sexo=prompt("ERROR.Ingrese f o m");
- 			
- 		}
+		notas=parseInt(prompt("Ingrese las notas #"+contador));
+		acumulador=acumulador+notas;
+		sexo=prompt("Ingrese el sexo. (f/m) #"+contador);
+		while(sexo!='f' && sexo!='m'){
 
-		if(sexo=="f")
- 			{
- 				mujeres++;
- 			}else{
- 				hombres++;
- 			
- 			}
- 			
- 			if(edad<18){
- 				
- 				Mmenor++;
- 			}else{
- 				
-				Mmayor++;
- 			}	
- 			
- 			if(bandera==0 || edad > mayor)
- 			{
- 				mayor=edad;
- 				nombreMayor=nombre;
- 			}
+		sexo=prompt("Error. Ingrese un sexo valido. (f/m)");
+		}
+		if(notas<0 || notas>10){
 
- 			if(bandera == 0 || edad < menor)
- 			{
- 				menor=edad;
- 				nombreMenor=nombre;
- 				bandera=1;
- 			}
+			notas=parseInt(prompt("Error.Ingrese una nota valida"));	
+		}
 
+		if(bandera==0 || notas<notaBaja){
 
- 			if(sexo=='m' && hombres == 1){
- 				nombreHombreMenor=nombre;
- 				edadHombreMenor=edad;
- 			
- 			}
+			notaBaja=notas;
+			sexoBaja=sexo;
+			bandera++;
+		}
 
- 			if(sexo=='m' && edad<edadHombreMenor){
- 				nombreHombreMenor=nombre;
- 				edadHombreMenor=edad;
- 			}
- 	    	
+		if(notas<notaBaja){
+
+			notaBaja=notas;
+			sexoBaja=sexo;
+		}
+
+		if(notas>=6){
+
+			varones++;
+		}
+
 	}
 
 	
 
-			
+	alert("El promedio de las notas es : "+acumulador/5);
+	alert("La nota mas baja es : "+notaBaja+" y su sexo es : "+sexoBaja);
+	alert("Varones con nota mayor a 6 : "+varones);
 
-
-	document.write("<br> la cantidad de mayores es : "+Mmayor);
- 	document.write("<br> la cantidad de menores es : "+Mmenor);
- 	document.write("<br> la cantidad de hombres es : "+hombres);
- 	document.write("<br> la cantidad de mujeres es : "+mujeres);
- 	document.write("<br> el nombre del mayor es : "+nombreMayor);
- 	document.write("<br> el nombre del menor es : "+nombreMenor);
- 	if(hombres==0){
- 		nombreHombreMenor="No se ingreso ningun hombre";
-
- 	}
- 	document.write("<br> el nombre del hombre menor es :"+nombreHombreMenor);
 }
